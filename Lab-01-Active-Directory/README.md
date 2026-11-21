@@ -133,11 +133,53 @@ Employee onboarding, department transfers, and departures require regular review
 
 ## 10. Evidence & Screenshots
 
-Original lab screenshots will be organized in a dedicated `screenshots` folder.
+The following screenshots were captured during my hands-on Active Directory lab. Each image documents a specific administrative activity and its relevance to identity and access management.
 
-Each screenshot will be accompanied by an explanation of the configuration shown, its business purpose, and the result demonstrated.
+### Evidence 01 — Departmental Organizational Units
 
-Sensitive account details and unnecessary browser information will be removed from public-facing evidence where appropriate.
+![Active Directory departmental organizational units](01-AD-Department-OUs.png)
+
+**Configuration demonstrated:** An Active Directory organizational structure containing departmental OUs for Human Resources, Finance, IT, Sales, and Operations within the training domain.
+
+**Technical explanation:** Organizational units provide a logical way to organize directory objects. They can support delegated administration and Group Policy application, although creating an OU does not automatically assign permissions.
+
+**Business relevance:** Separating employee identities into departments makes directory administration more manageable and supports consistent identity lifecycle processes.
+
+**Evidence verified:** The screenshot shows the departmental OU structure in Active Directory Users and Computers.
+
+### Evidence 02 — Finance Security Group Membership
+
+![Finance employee security group membership](02-AD-Finance-Membership.png)
+
+**Configuration demonstrated:** Sarah Johnson's membership in the Finance security group, `GG_Finance_Users`, alongside the standard `Domain Users` group.
+
+**Technical explanation:** Security groups allow administrators to manage access for multiple employees collectively. Group membership can support access assignments when the group is granted permissions to a resource.
+
+**Business relevance:** Departmental group assignments simplify onboarding, department transfers, and access reviews while supporting least-privilege principles.
+
+**Evidence verified:** The screenshot shows Sarah Johnson's group memberships in Active Directory Users and Computers. It does not independently establish access to a specific protected resource.
+
+### Evidence 03 — Human Resources Security Group Membership
+
+![HR employee security group membership](03-AD-HR-Membership.png)
+
+**Configuration demonstrated:** Jessica Davis's membership in the HR security group, `GG_HR_Users`, alongside the standard `Domain Users` group.
+
+**Technical explanation:** Assigning employees to departmental security groups helps administrators organize identities and manage permissions consistently. Access to individual resources still depends on the permissions assigned to those groups.
+
+**Business relevance:** Consistent group-based administration can reduce unnecessary access and simplify audits or employee access changes.
+
+**Evidence verified:** The screenshot confirms Jessica Davis's departmental group membership. It does not independently demonstrate access to HR applications or files.
+
+### Evidence Summary
+
+| Evidence | Administrative Activity | Verification |
+|---|---|---|
+| 01 | Departmental OU organization | Five departmental OUs visible |
+| 02 | Finance group membership | Sarah Johnson assigned to Finance group |
+| 03 | HR group membership | Jessica Davis assigned to HR group |
+
+**Security principle demonstrated:** Organized directory structures and validated group memberships provide a foundation for manageable, auditable identity administration.
 
 ## 11. Lessons Learned
 

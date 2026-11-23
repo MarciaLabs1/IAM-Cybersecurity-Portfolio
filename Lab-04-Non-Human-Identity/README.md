@@ -199,24 +199,156 @@ Temporary credentials should be protected, periodically reviewed, and removed wh
 
 Reviewing application permissions and credential inventory after remediation provides evidence of the resulting security configuration.
 
+
 ## 11. Evidence & Screenshots
 
-Original screenshots from the completed Lab 4 exercise will be embedded in this section, with individual technical explanations.
+The following nine screenshots document my hands-on Microsoft Entra ID non-human identity management exercise.
 
-The evidence will cover:
+The project involved creating an application registration, inspecting its service principal, evaluating Microsoft Graph API permissions, managing a temporary application credential, and performing security remediation.
 
-- Application registration and single-tenant configuration
-- Application registration overview
-- Enterprise application and service principal
-- Microsoft Graph permission assessment
-- Temporary client secret configuration
-- Client secret inventory and expiration
-- Unnecessary permission removal
-- Credential removal and final security verification
+The environment was a personal training tenant using a simulated internal Finance reporting application.
 
-Each screenshot will include its configuration, technical explanation, business relevance, and verified result.
+### Evidence 01 — Application Registration Configuration
 
-No secret values will be published.
+![Application registration configuration](01-application-registration-configuration.png)
+
+**Configuration demonstrated:** Creation of the `IAM-Lab-Finance-Reporting` application using the single-tenant organizational directory option.
+
+**Technical explanation:** App registrations establish application identities within Microsoft Entra ID. The single-tenant account setting limits which organizational directory the application is designed to support.
+
+**Business relevance:** Defining the appropriate tenancy model helps organizations control the scope of application identity configurations.
+
+**Evidence verified:** The screenshot documents the application's initial registration settings.
+
+### Evidence 02 — Application Identity Created
+
+![Application registration overview](02-application-identity-created.png)
+
+**Configuration demonstrated:** The successfully created `IAM-Lab-Finance-Reporting` application registration.
+
+**Technical explanation:** Microsoft Entra ID assigns identifiers to the registered application, including an application (client) ID and application object ID. These identifiers distinguish the application from other directory objects.
+
+**Business relevance:** Accurate application identification supports inventory management, ownership tracking, and security reviews.
+
+**Evidence verified:** The screenshot documents the registered application and its overview information.
+
+### Evidence 03 — Service Principal Inspection
+
+![Enterprise application service principal](03-service-principal-inspection.png)
+
+**Configuration demonstrated:** Inspection of the enterprise application associated with `IAM-Lab-Finance-Reporting`.
+
+**Technical explanation:** The application registration defines the application's configuration, while its service principal represents the application within the tenant. The service principal has its own object ID, distinct from the application registration's object ID.
+
+**Business relevance:** Understanding service principals helps identity administrators locate and review application identities and their tenant-specific access.
+
+**Evidence verified:** The screenshot documents the enterprise application and corresponding service principal.
+
+### Evidence 04 — Baseline Microsoft Graph Permissions
+
+![Baseline Microsoft Graph API permissions](04-baseline-api-permissions.png)
+
+**Configuration demonstrated:** Inspection of the application's existing Microsoft Graph permission configuration.
+
+**Technical explanation:** The application initially included `User.Read` as a delegated permission. Delegated permissions allow an application to act within the context of a signed-in user, subject to the applicable authorization.
+
+**Business relevance:** Reviewing baseline API permissions helps administrators understand which access has been requested before making configuration changes.
+
+**Evidence verified:** The screenshot documents the application's initial Microsoft Graph API permission settings.
+
+### Evidence 05 — Application Permission Selection
+
+![Application permission selection](05-application-permission-selection.png)
+
+**Configuration demonstrated:** Selection of the Microsoft Graph `User.Read.All` application permission.
+
+**Technical explanation:** Application permissions are designed for application-only access without an interactive signed-in user. The `User.Read.All` application permission can enable reading full user profiles throughout the directory when appropriately consented.
+
+**Business relevance:** Broad application permissions require careful evaluation because an application identity may have access extending beyond one employee's account.
+
+**Evidence verified:** The screenshot documents the selection of the directory-wide application permission for the security assessment.
+
+### Evidence 06 — Permission Risk Assessment
+
+![Microsoft Graph permission risk assessment](06-permission-risk-assessment.png)
+
+**Configuration demonstrated:** Review of the application's configured Microsoft Graph permissions and administrator consent status.
+
+**Technical explanation:** The `User.Read.All` application permission requires administrator consent. During this exercise, the permission was configured for evaluation but administrator consent was not granted.
+
+A requested API permission is not equivalent to an effective permission grant.
+
+**Business relevance:** Administrators should identify excessive permission requests before approval to prevent unnecessary exposure of organizational directory information.
+
+**Evidence verified:** The screenshot documents the broad application permission request and its ungranted consent status.
+
+### Evidence 07 — Temporary Application Credential
+
+![Temporary application credential configuration](07-temporary-credential-configuration.png)
+
+**Configuration demonstrated:** Creation and inspection of a temporary client secret for `IAM-Lab-Finance-Reporting`.
+
+**Credential description:** `IAM-Lab-Finance-Temporary-Secret`
+
+**Expiration:** 90 days
+
+**Technical explanation:** Client secrets are credentials that applications can use to authenticate during supported application authentication flows. A secret value must be treated as sensitive authentication material.
+
+Using a shorter expiration period reduces the potential lifetime of a compromised credential.
+
+**Business relevance:** Organizations should maintain application credential inventories, enforce appropriate expiration periods, and rotate or remove credentials when necessary.
+
+**Evidence verified:** The screenshot documents the temporary credential configuration and its lifecycle settings.
+
+**Security note:** No client secret value is included in this documentation.
+
+### Evidence 08 — Credential Security Remediation
+
+![Application credential remediation](08-credential-remediation.png)
+
+**Action demonstrated:** Removal of the temporary client secret after completing the credential management exercise.
+
+**Technical explanation:** Deleting an unnecessary application credential prevents that credential from continuing to authenticate the application.
+
+The credential was created for training rather than to support an operational reporting service.
+
+**Business relevance:** Removing credentials that are no longer required reduces application identity exposure and supports credential lifecycle management.
+
+**Evidence verified:** The screenshot documents the credential remediation state following the training exercise.
+
+### Evidence 09 — Permission Remediation and Verification
+
+![API permission remediation verification](09-permission-remediation-and-verification.png)
+
+**Action demonstrated:** Removal of the unnecessary `User.Read.All` application permission request.
+
+**Technical explanation:** The directory-wide permission was assessed as excessive for the limited training scenario and removed without granting administrator consent.
+
+Removing an ungranted permission request prevents that request from remaining in the application's configured permissions. It should not be described as revoking an already granted permission.
+
+**Business relevance:** Reviewing and reducing unnecessary permission requests supports least-privilege application administration and safer consent governance.
+
+**Evidence verified:** The screenshot documents the updated Microsoft Graph API permission configuration following remediation.
+
+### Evidence Summary
+
+These nine screenshots document the non-human identity management lifecycle from application registration through security review and remediation.
+
+The exercise demonstrates:
+
+1. Registering an application identity in Microsoft Entra ID.
+2. Identifying its corresponding service principal.
+3. Distinguishing delegated permissions from application permissions.
+4. Evaluating broad Microsoft Graph permission requests and administrator consent.
+5. Creating and reviewing a temporary application credential.
+6. Removing unnecessary credentials and permission requests.
+7. Verifying the resulting application security configuration.
+
+**Outcome:** The simulated Finance reporting application was registered and evaluated, and unnecessary application permissions and temporary credentials were removed.
+
+**Validation limitation:** This project did not involve a deployed Finance reporting service, successful application token acquisition, live Microsoft Graph API calls, or access to production organizational information.
+
+The evidence documents identity administration and security configuration within a personal Microsoft Entra training environment.
 
 ## 12. Skills Demonstrated
 

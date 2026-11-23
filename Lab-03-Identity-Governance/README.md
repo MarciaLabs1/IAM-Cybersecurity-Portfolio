@@ -161,23 +161,178 @@ Documenting the reviewer, denial justification, review status, application resul
 
 Checking the group's membership after applying results provides stronger evidence of remediation than relying solely on the recorded decision.
 
+
 ## 11. Evidence & Screenshots
 
-Original screenshots from the completed Lab 3 exercise will be uploaded to this folder and embedded here with individual technical explanations.
+The following 12 screenshots document the configuration, execution, completion, and verification of a Microsoft Entra ID access recertification review in my personal training environment.
 
-The evidence will document:
+The scenario involved a simulated Finance-to-HR employee transfer. The access review, denial decision, application of results, and Finance group membership removal were actual administrative actions performed in the lab tenant.
 
-- Access review configuration and scope
-- Review scheduling and reviewer settings
-- My Access review assignment
-- The recommended decision and manual denial
-- The documented business justification
-- Completion of the access review
-- Manual application of review results
-- Successful membership removal
-- Independent verification of the Finance group's direct membership
+### Evidence 01 — Access Review Scope
 
-Each evidence image will include its configuration, technical explanation, business relevance, and verified outcome.
+![Finance access review scope](01-review-scope.png)
+
+**Configuration demonstrated:** Access review `AR-01-Finance-Access-Recertification` targeting the `GG_Finance_Users` security group.
+
+**Technical explanation:** The review resource and scope determine which access assignments are evaluated. Limiting the review to Finance group membership focuses the process on a specific set of permissions.
+
+**Business relevance:** Targeted recertification helps organizations assess whether department-specific access remains appropriate.
+
+**Evidence verified:** The screenshot documents the selected Finance group and review scope.
+
+### Evidence 02 — Reviewer Assignment and Schedule
+
+![Reviewer and schedule settings](02-reviewer-and-schedule.png)
+
+**Configuration demonstrated:** Review assignment to Marcia Lab Admin, with a one-time review scheduled for November 10–11, 2026.
+
+**Technical explanation:** Reviewer assignments establish responsibility for access decisions, while review scheduling defines the period during which decisions are collected.
+
+**Business relevance:** Assigned ownership and review deadlines support consistent access governance.
+
+**Evidence verified:** The screenshot documents the reviewer and review scheduling settings.
+
+### Evidence 03 — Review Completion Safeguards
+
+![Review completion safeguards](03-completion-safeguards.png)
+
+**Configuration demonstrated:** Automatic application disabled, no-response action set to No change, and the inactivity-related decision helper configured.
+
+**Technical explanation:** With automatic application disabled, review decisions require a separate administrative application step before membership changes take effect.
+
+**Business relevance:** Separating review decisions from remediation allows administrators to validate outcomes before modifying access.
+
+**Evidence verified:** The screenshot documents the configured review completion safeguards.
+
+### Evidence 04 — Audit and Notification Settings
+
+![Audit and notification settings](04-audit-and-notification-settings.png)
+
+**Configuration demonstrated:** Justification requirement enabled, with email notifications and reminders configured.
+
+**Technical explanation:** Required decision justifications capture the reviewer's reasoning. Notifications and reminders support review participation.
+
+**Business relevance:** Documented decisions and administrative reminders improve accountability and governance process consistency.
+
+**Evidence verified:** The screenshot documents the configured justification and notification options.
+
+### Evidence 05 — Access Review Created
+
+![Access review creation](05-review-creation.png)
+
+**Configuration demonstrated:** Finance access recertification review successfully created in Microsoft Entra ID.
+
+**Technical explanation:** Creating the review establishes a governance workflow for evaluating access assignments associated with the targeted resource.
+
+**Business relevance:** Access recertification workflows help organizations periodically reassess whether permissions remain justified.
+
+**Evidence verified:** The screenshot documents the created Finance review in the training environment.
+
+### Evidence 06 — Initial Access Review Results
+
+![Initial access review results](06-initial-review-results.png)
+
+**Configuration demonstrated:** Initial review results for the Finance access recertification.
+
+**Technical explanation:** The review interface identifies the access assignment requiring evaluation and provides the review workflow's current decision status.
+
+**Business relevance:** Administrators need visibility into outstanding reviews before making or applying access decisions.
+
+**Evidence verified:** The screenshot records the review's initial results before the final remediation.
+
+### Evidence 07 — Reviewer Workspace
+
+![My Access reviewer workspace](07-reviewer-workspace.png)
+
+**Configuration demonstrated:** The assigned Finance access review displayed in the Microsoft My Access reviewer interface.
+
+**Technical explanation:** The reviewer workspace provides the interface for evaluating the user's continued access and submitting a decision.
+
+**Business relevance:** A designated review workspace supports structured access recertification and administrative accountability.
+
+**Evidence verified:** The screenshot documents the reviewer interface used for the Finance access review.
+
+### Evidence 08 — Documented Access Denial
+
+![Documented access denial](08-documented-denial.png)
+
+**Decision demonstrated:** Manual denial of Sarah Johnson's continued Finance access.
+
+**Technical explanation:** The simulated business scenario treated Sarah Johnson as having transferred from Finance to Human Resources. Because her Finance group access was no longer required under that scenario, I selected Deny and provided a business justification.
+
+**Business relevance:** Access decisions should reflect current job responsibilities and least-privilege requirements rather than relying solely on automated recommendations.
+
+**Evidence verified:** The screenshot documents the denial action and its supporting justification.
+
+### Evidence 09 — Recorded Review Decision
+
+![Recorded review decision](09-recorded-decision.png)
+
+**Configuration demonstrated:** The submitted decision recorded within the Finance access review.
+
+**Technical explanation:** Recording a denial establishes the reviewer's access recertification decision. It does not necessarily remove access until the results are applied.
+
+**Business relevance:** Distinguishing a recorded decision from completed remediation helps prevent inaccurate access-governance reporting.
+
+**Evidence verified:** The screenshot documents the review decision associated with the Finance access assignment.
+
+### Evidence 10 — Review Completion
+
+![Access review completion](10-review-completion.png)
+
+**Configuration demonstrated:** Finance access review completed after the single targeted user was reviewed.
+
+**Technical explanation:** Once the review decision was recorded, the review was stopped and marked complete.
+
+**Business relevance:** Completing the review closes the decision-making phase and prepares the results for subsequent administrative action.
+
+**Evidence verified:** The screenshot documents the completed review status.
+
+### Evidence 11 — Successful Access Remediation
+
+![Successful access remediation](11-successful-remediation.png)
+
+**Action demonstrated:** Manual application of the completed access review results.
+
+**Technical explanation:** Because automatic application was disabled, I separately applied the results. Microsoft Entra ID reported a successful removal from Finance group membership.
+
+**Recorded result:** `Successfully removed from membership`
+
+**Business relevance:** Applying a denied review decision converts an access governance assessment into an actual reduction of unnecessary access.
+
+**Evidence verified:** The screenshot documents successful application of the access review result by Marcia Lab Admin.
+
+### Evidence 12 — Independent Membership Verification
+
+![Independent Finance membership verification](12-independent-membership-verification.png)
+
+**Verification demonstrated:** Direct membership inspection of the `GG_Finance_Users` security group.
+
+**Technical explanation:** After applying the access review results, I independently inspected the Finance group's direct members rather than relying exclusively on the review's success message.
+
+**Observed result:**
+
+- `0 group members found`
+- `No members have been found`
+
+**Business relevance:** Independent verification provides stronger evidence that an access removal was completed.
+
+**Evidence verified:** The screenshot confirms the Finance group had no direct members following remediation. This does not establish the absence of all other possible permissions across the tenant.
+
+### Evidence Summary
+
+These 12 screenshots document the access governance lifecycle from review configuration through decision-making, completion, remediation, and independent verification.
+
+The completed lab demonstrates the distinction between:
+
+1. Identifying access that requires review.
+2. Recording a justified access decision.
+3. Applying the review results.
+4. Confirming that the intended membership change occurred.
+
+**Outcome:** Sarah Johnson's direct Finance group membership was successfully removed in the lab tenant following a documented, manually applied denial decision.
+
+**Scope limitation:** The department transfer was simulated. The verification confirms the Finance group's direct membership status, not every potential access assignment elsewhere in Microsoft Entra ID.
 
 ## 12. Skills Demonstrated
 

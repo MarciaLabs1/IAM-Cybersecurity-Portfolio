@@ -1,4 +1,4 @@
-# Marcia Wagner | IAM & Cybersecurity Portfolio.
+# Marcia Wagner | IAM & Cybersecurity Portfolio
 
 **Aspiring Identity & Access Management (IAM) Analyst | Cybersecurity Enthusiast**
 
